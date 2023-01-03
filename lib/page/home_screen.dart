@@ -51,17 +51,29 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: 15),
             MyButton(
               onPressed: () {
-                result = int.parse(numOneController.text) +
-                    int.parse(numTwoController.text);
-                print(result);
-                var route = MaterialPageRoute(
-                  builder: (_) => ResultPage(
-                    kiKowad: int.parse(numOneController.text),
-                    kiLawad: int.parse(numTwoController.text),
-                    result: result,
-                  ),
-                );
-                Navigator.push(context, route);
+                if (numOneController.text == "" ||
+                    numTwoController.text == "") {
+                  showDialog(
+                      context: context,
+                      builder: (_) {
+                        return AlertDialog(
+                          title: Text("Empty Feilds"),
+                          content: Text("So Gali Number"),
+                        );
+                      });
+                } else {
+                  result = int.parse(numOneController.text.trim()) +
+                      int.parse(numTwoController.text.trim());
+
+                  var route = MaterialPageRoute(
+                    builder: (_) => ResultPage(
+                      kiKowad: int.parse(numOneController.text),
+                      kiLawad: int.parse(numTwoController.text),
+                      result: result,
+                    ),
+                  );
+                  Navigator.push(context, route);
+                }
               },
             ),
           ],

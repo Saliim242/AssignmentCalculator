@@ -33,7 +33,6 @@ class ReusableTextFeild extends StatelessWidget {
           ],
         ),
         child: TextFormField(
-          validator: (value) {},
           style: TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.bold,
